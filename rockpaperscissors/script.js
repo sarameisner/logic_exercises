@@ -1,4 +1,5 @@
 "use strict";
+// variabler
 let userGuess;
 let computerGuess;
 let result;
@@ -7,90 +8,114 @@ const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 
+const player1 = document.querySelector("#player1");
+const player2 = document.querySelector("#player2");
+const buttons = document.querySelector("#buttons");
+
+const winText = document.querySelector("#win");
+const loseText = document.querySelector("#lose");
+const drawText = document.querySelector("#draw");
+
 rock.addEventListener("click", rockClicked);
 paper.addEventListener("click", paperClicked);
 scissors.addEventListener("click", scissorsClicked);
 
-const player1 = document.querySelector("#player1");
-const player2 = document.querySelector("#player2");
-
 function rockClicked() {
-  player1.classList.add("shake");
-  player2.classList.add("shake");
-
-  // Fjern event listener, så den kun lytter én gang
-  this.removeEventListener("mousedown", rockClicked);
-
-  // Når animationen er færdig, fjern 'shake'-klassen
-  player1.addEventListener("animationend", () => {
-    player1.classList.remove("shake");
-  });
-  player2.addEventListener("animationend", () => {
-    player2.classList.remove("shake");
-  });
-
-  console.log("rock clicked");
-  userGuess = "rock";
-  computerGuesses();
+  startGame("rock"); // når brugeren klikker på rock, starter vi spillet med "rock" som valg
 }
 
 function paperClicked() {
-  console.log("paper clicked");
-  userGuess = "paper";
-  computerGuesses();
-
-  this.classList.add("shake");
+  startGame("paper"); // når brugeren klikker på paper, starter vi spillet med "paper" som valg
 }
 
 function scissorsClicked() {
-  console.log("scissors clicked");
-  userGuess = "scissors";
+  startGame("scissors"); // når brugeren klikker på scissors, starter vi spillet med "scissors" som valg
+}
+
+// start spillet
+function startGame(userChoice) {
+  // deaktiver knapper midlertidigt
+  buttons.classList.add("disabled");
+
+  // sætter / gemmer brugerens valg
+  userGuess = userChoice;
+
+  // starter animering af shake for begge spillere
+  player1.classList.add("shake");
+  player2.classList.add("shake");
+
+  // slutter animationen af shake igen
+  player1.addEventListener("animationend", endShake);
+  player2.addEventListener("animationend", endShake);
+
+  // får computeren til at gætte
   computerGuesses();
 }
 
+// computeren vælger tilfældigt rock, paper, eller scissors - ved at vælge et tilfældigt tal 0, 1, eller 2 og koble det til choices
 function computerGuesses() {
-  computerGuess = "rock";
-  console.log("computer guesses");
-  console.log("user guesses", userGuess);
-  determinWinner();
+  const choices = ["rock", "paper", "scissors"];
+  computerGuess = choices[Math.floor(Math.random() * 3)];
+  console.log("computer guesses:", computerGuess);
 }
 
+// når animationen slutter
+function endShake() {
+  // fjern animation
+  player1.classList.remove("shake");
+  player2.classList.remove("shake");
+
+  player1.removeEventListener("animationend", endShake);
+  player2.removeEventListener("animationend", endShake);
+
+  //  resultatet af spillet
+  showResult();
+}
+
+// bestem vinderen
 function determinWinner() {
-  if (userGuess === "rock" && computerGuess === "rock") {
-    result = "draw";
+  // hvis begge vælger det samme, er det uafgjort
+  if (userGuess === computerGuess) {
+    return "draw";
   }
 
-  if (userGuess === "rock" && computerGuess === "paper") {
-    result = "computer";
+  // brugeren vinder
+  else if ((userGuess === "rock" && computerGuess === "scissors") || (userGuess === "paper" && computerGuess === "rock") || (userGuess === "scissors" && computerGuess === "paper")) {
+    return "user";
   }
 
-  if (userGuess === "rock" && computerGuess === "scissors") {
-    result = "user";
+  // computeren vinder
+  else {
+    return "computer";
+  }
+}
+
+// find ud af hvem der har vundet
+function showResult() {
+  const result = determinWinner();
+
+  // skjuler alle resultater først
+  winText.classList.add("hidden");
+  loseText.classList.add("hidden");
+  drawText.classList.add("hidden");
+
+  // vis det rigtige resultat
+  if (result === "user") {
+    winText.classList.remove("hidden");
+  } else if (result === "computer") {
+    loseText.classList.remove("hidden");
+  } else {
+    drawText.classList.remove("hidden");
   }
 
-  if (userGuess === "paper" && computerGuess === "rock") {
-    result = "user";
-  }
+  // fjerner de gamle klasser før man tilføjer de nye
+  player1.classList.remove("rock", "paper", "scissors");
+  player2.classList.remove("rock", "paper", "scissors");
 
-  if (userGuess === "paper" && computerGuess === "paper") {
-    result = "draw";
-  }
+  // opdater spillerens valg
+  player1.classList.add(userGuess);
+  player2.classList.add(computerGuess);
 
-  if (userGuess === "paper" && computerGuess === "scissors") {
-    result = "computer";
-  }
-
-  if (userGuess === "scissors" && computerGuess === "rock") {
-    result = "computer";
-  }
-
-  if (userGuess === "scissors" && computerGuess === "paper") {
-    result = "user";
-  }
-
-  if (userGuess === "scissors" && computerGuess === "scissors") {
-    result = "draw";
-  }
-
-  console.log("result", result);
+  // aktivérer knapperne igen
+  buttons.classList.remove("disabled");
 }
