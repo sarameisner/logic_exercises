@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+p {
+  font-family: "Handjet", sans-serif;
+  font-size: 20px;
+}
+
+h1 {
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+.container {
+  padding: 50px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: wheat;
+  box-shadow: 0 -4px rgb(21 108 0 / 50%) inset, 0 4px rgb(100 253 31 / 99%) inset, -4px 0 rgb(100 253 31 / 50%) inset, 4px 0 rgb(21 108 0 / 50%) inset;
+  max-width: 100%;
+  background-color: white;
+}
+
+input,
+button {
+  gap: 1rem;
+  font-family: "Handjet", sans-serif;
+  font-size: 20px;
+  background-color: #008542;
+  color: #fff;
+  text-shadow: 0 2px 0 rgb(0 0 0 / 25%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  z-index: 1;
+  user-select: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: unset;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0, 0.8, 0.26, 0.99);
+  border-radius: 0;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #008542 !important;
+  box-shadow: 0 -4px rgb(21 108 0 / 50%) inset, 0 4px rgb(100 253 31 / 99%) inset, -4px 0 rgb(100 253 31 / 50%) inset, 4px 0 rgb(21 108 0 / 50%) inset;
+}
+
+button:hover {
+  background-color: #00a554;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 128, 64, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+input {
+  margin-right: 10px;
+}
+
+#feedback {
+  margin-top: 20px;
+}
+
+.celebration {
+  color: green;
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-30px) scale(1.3);
+  }
+  60% {
+    transform: translateY(-15px) scale(1.15);
+  }
+}
