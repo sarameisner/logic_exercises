@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  background-color: #444059;
+  background-color: #eee;
   font-family: "Luckiest Guy", cursive;
-  color: #eee;
+  color: #444059;
   font-size: 16px;
 }
 
@@ -107,7 +107,6 @@ h1 {
 #buttons {
   display: flex;
   justify-content: space-around;
-  max-width: 50rem;
   margin: 0 auto;
 }
 
@@ -118,8 +117,8 @@ h1 {
 #buttons button {
   background-size: 100%;
   border-radius: 5rem;
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
   transition: filter 0.8s;
 }
 
