@@ -116,6 +116,6 @@ function showResult() {
   player1.classList.add(userGuess);
   player2.classList.add(computerGuess);
 
-  // aktivérer knapperne igen
+  // aktivérer knapperne igen så man kan spille igen
   buttons.classList.remove("disabled");
 }
