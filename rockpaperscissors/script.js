@@ -68,11 +68,13 @@ function endShake() {
   player1.removeEventListener("animationend", endShake);
   player2.removeEventListener("animationend", endShake);
 
-  //  resultatet af spillet
+  // resultatet af spillet
   showResult();
 }
 
 // bestem vinderen
+// når return bliver kaldt, afsluttes funktionen, og den værdi, der står efter return, sendes tilbage til det sted, hvor funktionen blev kaldt
+
 function determinWinner() {
   // hvis begge vælger det samme, er det uafgjort
   if (userGuess === computerGuess) {
