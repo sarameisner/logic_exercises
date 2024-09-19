@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beregn Rektangel Areal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Beregn arealet af en rektangel</h1>
+
+        <form id="arealForm">
+            <label for="width">Bredde (i meter):</label>
+            <input type="number" id="width" name="width" required>
+
+            <label for="height">Højde (i meter):</label>
+            <input type="number" id="height" name="height" required>
+
+            <button type="button" id="beregnButton">Beregn areal</button>
+        </form>
+
+        <div id="resultat"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
