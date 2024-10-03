@@ -10,7 +10,6 @@ const tooLowBtn = document.getElementById("tooLow");
 const tooHighBtn = document.getElementById("tooHigh");
 const correctBtn = document.getElementById("correct");
 const resultDisplay = document.getElementById("result");
-
 startBtn.addEventListener("click", startGame);
 tooLowBtn.addEventListener("click", tooLow);
 tooHighBtn.addEventListener("click", tooHigh);
@@ -22,22 +21,31 @@ function startGame() {
   guesses = 0;
   gameDiv.style.display = "block";
   resultDisplay.style.display = "none";
+  // deaktiverer startknappen
   startBtn.disabled = true;
+  // aktiverer for lav og for højt knappen
   tooLowBtn.disabled = false;
   tooHighBtn.disabled = false;
   correctBtn.disabled = false;
+  // funktionen der får computeren til at gætte
   makeGuess();
 }
 
 function makeGuess() {
-  computerGuessDisplay.style.opacity = 0; // Skjuler gættet for effekten
+  computerGuessDisplay.style.opacity = 0;
   setTimeout(() => {
+    // beregner computerens gæt
     guess = Math.floor((min + max) / 2);
+    // viser gættet på skærmen
     computerGuessDisplay.textContent = guess;
-    computerGuessDisplay.style.opacity = 1; // Viser gættet med fade-in
-    computerGuessDisplay.classList.add("pop"); // Tilføjer en animationseffekt
+    // fade in
+    computerGuessDisplay.style.opacity = 1;
+    // animation
+    computerGuessDisplay.classList.add("pop");
+    // øger antallet af gæt
     guesses++;
-  }, 500); // Forsinkelsen på 500ms giver en "tænke"-effekt
+    // forsinker med 500ms for at give en tænke effekt
+  }, 500);
 }
 
 function tooLow() {
@@ -45,6 +53,7 @@ function tooLow() {
   makeGuess();
 }
 
+// justerer det højeste mulige gæt til et lavere end det forrige gæt
 function tooHigh() {
   max = guess - 1;
   makeGuess();
@@ -53,8 +62,10 @@ function tooHigh() {
 function correct() {
   resultDisplay.textContent = `Computeren gættede rigtigt! Det tog ${guesses} forsøg.`;
   resultDisplay.style.display = "block";
+  //   deaktiverer knapperne
   tooLowBtn.disabled = true;
   tooHighBtn.disabled = true;
   correctBtn.disabled = true;
+  //   aktiverer start knappen så man kan spille igen
   startBtn.disabled = false;
 }
