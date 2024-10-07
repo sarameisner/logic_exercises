@@ -1,8 +1,4 @@
-document.querySelector("select").addEventListener("change", selectChange);
-
-function selectChange(evt) {
-  console.log("change", evt.target.value);
-
-  // man kan også gøre sådan her i stedet for⬇
-  //console.log(document.querySelector("select").value);
-}
+document.getElementById("theme-select").addEventListener("change", (event) => {
+  const selectedTheme = event.target.value; // henter valgt tema
+  document.body.setAttribute("data-theme", selectedTheme); // opdaterer data-theme
+});

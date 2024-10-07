@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Theme Switcher</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module" src="script.js"></script>
 </head>
 
-<body>
+<body data-theme="light">
+    <header>
+        <h1>Theme Switcher</h1>
+        <label for="theme-select">Choose a theme:</label>
+        <select id="theme-select">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="hawaii">Hawaii</option>
+        </select>
+    </header>
+    <main>
+        <p>Welcome to the theme switcher website!</p>
+    </main>
+    <footer>
+        <p>&copy; Sara Meisner - 2024 Theme Switcher</p>
+    </footer>
 
-    <label for="pet-select">Choose a pet:</label>
-
-    <select name="pets" id="pet-select">
-        <option value="">--Please choose an option--</option>
-        <option value="dog">Dog</option>
-        <option value="cat">Cat</option>
-        <option value="hamster">Hamster</option>
-        <option value="parrot">Parrot</option>
-        <option value="spider">Spider</option>
-        <option value="goldfish">Goldfish</option>
-    </select>
-
-
+    <script src="script.js"></script>
 </body>
 
 </html>
