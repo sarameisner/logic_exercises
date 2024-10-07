@@ -1,0 +1,42 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f3f3;
+  color: #555;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #e27d60;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  background-color: #e8a87c;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c38d9e;
+}
+
+.good-word {
+  background-color: yellow;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+dialog {
+  border: none;
+  padding: 20px;
+  font-size: 1rem;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
