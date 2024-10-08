@@ -2,12 +2,16 @@
 
 window.addEventListener("DOMContentLoaded", start);
 
-const allAnimals = [];
+const allAnimals = []; // vores første array med alle dyr
+let filteredAnimals = []; // array med de filtrerede dyr
 
 function start() {
   console.log("ready");
 
   loadJSON();
+
+  // lyt efter ændringer i dropdownen
+  document.querySelector("#filter-type").addEventListener("change", selectFilter);
 }
 
 function loadJSON() {
@@ -35,8 +39,26 @@ function prepareObjects(jsonData) {
     allAnimals.push(animal);
   });
 
-  // kalder displayList for at vise listen
+  // viser listen
+  filteredAnimals = allAnimals;
   displayList();
+}
+
+// selve filtreringen
+function selectFilter(event) {
+  const filterType = event.target.value; // henter den valgte filtrering
+  filterList(filterType);
+}
+
+// filtrer listen baseret på det valgte
+function filterList(type) {
+  if (type === "all") {
+    filteredAnimals = allAnimals; // viser alle dyr hvis filteret er all
+  } else {
+    // filtrerer dyrene
+    filteredAnimals = allAnimals.filter((animal) => animal.type === type);
+  }
+  displayList(); // opdaterer visningen
 }
 
 function displayList() {
@@ -44,7 +66,7 @@ function displayList() {
   document.querySelector("#list tbody").innerHTML = "";
 
   // bygger en ny liste og kalder displayAnimal for hvert dyr
-  allAnimals.forEach(displayAnimal);
+  filteredAnimals.forEach(displayAnimal);
 }
 
 function displayAnimal(animal) {

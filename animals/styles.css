@@ -64,3 +64,11 @@ tbody tr:hover td {
   font-weight: bold;
   transition: all 0.3s ease;
 }
+
+#filter-type {
+  padding: 8px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
